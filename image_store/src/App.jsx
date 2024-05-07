@@ -1,18 +1,17 @@
 import { Routes,Route} from 'react-router-dom'
-import Footer from './component/Footer'
+
 import './App.css'
+import Home from './Layout/Layout'
+import HomePage from './pages/HomePage'
 
 function App() {
   return(
     <>
    <Routes>
-   <Route>
-        
-   </Route>
+     <Route path='/' element = { <HomePage/>}></Route>
 
    </Routes>
-   <h1> Aman kumar</h1>
-   <Footer></Footer>
+  
    
     </>
   )
