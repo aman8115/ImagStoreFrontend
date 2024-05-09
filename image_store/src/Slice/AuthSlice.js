@@ -42,6 +42,12 @@ const authSice = createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
+        builder.addCase(LogIn.fulfilled,(state,action)=>{
+            localStorage.setItem('data',JSON.stringify(action?.payload?.user))
+            localStorage.setItem('isLoggedIn',true)
+            state.isLoggedIn = true;
+            state.data = action?.payload?.user
+        })
 
     }
 })

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import {useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { Rgister } from '../Slice/AuthSlice'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 import {BsPersonCircle} from 'react-icons/bs'
@@ -130,6 +130,9 @@ function Signup(){
                 <button type='submit'
                  className='pb-2 pt-2 rounded-lg bg-yellow-500 w-full hover:rounded-none hover:bg-yellow-600 text-white transition-all ease-in-out duration-300'
                 > CreateAccount</button>
+                <p>
+                    <Link to= '/login' className='text-lg link-secondary'> Have an Account  </Link>
+                </p>
              </form>
                
             </div>
