@@ -1,11 +1,16 @@
  import    Footer from '../component/Footer'
  import {FiMenu} from 'react-icons/fi'
 import {AiFillCloseCircle}  from 'react-icons/ai'
-import  {Link} from 'react-router-dom'
+import  {Link, useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 function Home({children}){
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const isLoggedIn = useSelector((state)=>state?.auth?.isLoggedIn)
+ 
     function ChangeWidth(){
       const drawerSide = document.getElementsByClassName('drawer-side')
-      drawerSide[0].style.width = '200px'
+      drawerSide[0].style.width = 'auto'
     }
     function Hidedrawer(){
      const element = document.getElementsByClassName('drawer-toggle')
@@ -38,8 +43,38 @@ function Home({children}){
             <li> <Link to= '/'> Home </Link></li>
             <li><Link to='/aboutus'>Aboutus</Link> </li>
             <li> <Link to = '/contactus'> Contactus </Link></li>
+            <ul>
+                
+                {!isLoggedIn &&(
+                  <li>
+                  <div className='flex items-center justify-center gap-3 w-full '>
+                  <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
+                      <Link to="/login">Login</Link>
+                  </button>
+                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                      <Link to='/signup'>SignUp</Link>
+                  </button>
+              </div>
+              </li>
 
+                )}
+
+                {isLoggedIn&&(
+                  <li>
+                  <div className='flex items-center justify-center gap-3 w-full '>
+                  <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
+                      <Link to="/profile">Profile</Link>
+                  </button>
+                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                      <Link>Logout</Link>
+                  </button>
+              </div>
+               </li>
+                )}
           </ul>
+          </ul>
+
+          
 
         </div>
         
@@ -49,20 +84,56 @@ function Home({children}){
 
         </div>
          
-         <div className='   hidden  md:block  md:flex md:items-center  md:justify-evenly md:top-10'>
+         <div className='   hidden  md:block  md:flex md:items-center  md:justify-between md:top-10 '>
          
           <ul className='flex gap-4'> 
            <li> <Link to='/'> Home</Link> </li>
             <li> <Link to='/aboutus'>AboutUs</Link></li>
             <li> <Link to='/contactus'> contactus </Link></li>
+              
+
 
           </ul>
-          <ul className='flex gap-5 justify-between right-4'>
-            <li className='
-             bg-transparent pb-1 pt-1 w-24 text-center rounded-lg bg-indigo-500 text-white hover:rounded-none transition-all ease-in-out duration-300'> <Link to=' /signup'> SignUp</Link></li>
-            <li  className='
-             bg-transparent pb-1 pt-1 w-24 text-center rounded-lg bg-indigo-500 text-white hover:rounded-none transition-all ease-in-out duration-300'> <Link to='/login'>LogIn</Link></li>
+          <ul>
+                
+                {!isLoggedIn &&(
+                  <li>
+                  <div className='flex items-center justify-center gap-3 w-full '>
+                  <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
+                      <Link to="/login">Login</Link>
+                  </button>
+                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                      <Link to='/signup'>SignUp</Link>
+                  </button>
+              </div>
+              </li>
+
+                )}
+
+                {isLoggedIn&&(
+                  <li>
+                  <div className='flex items-center justify-center gap-3 w-full '>
+                  <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
+                      <Link to="/profile">Profile</Link>
+                  </button>
+                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                      <Link >Logout</Link>
+                  </button>
+              </div>
+               </li>
+                )}
           </ul>
+      
+           
+
+         
+        
+          
+
+          
+
+           
+          
 
 
         </div>
