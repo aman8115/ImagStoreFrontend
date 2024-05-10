@@ -21,6 +21,7 @@ function Home({children}){
     async function handelLogout(e){
        e.preventDefault()
        const res = await dispatch(Logout())
+       if(res?.payload?.success) navigate('/')
     }
     return (
         <>

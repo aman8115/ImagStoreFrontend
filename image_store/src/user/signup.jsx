@@ -92,7 +92,7 @@ function Signup(){
                 <h3  className='text-2xl text-green-500'> <AiOutlineArrowLeft onClick={()=>navigate('/')}/> </h3>
                 <h1 className='text-3xl text-amber-500'>Create Your Account</h1>
                 <label htmlFor="image_uploads" className='cursor-pointer'>
-                    {previewImage?(<img className="h-24 w-24 rounded-full m-auto" src={previewImage}/>):(<BsPersonCircle className='w-24 h-24 rounded-all mx-auto'/>)}
+                    {previewImage?(<img className="h-24 w-24 rounded-full m-auto" src={previewImage}/>):(<BsPersonCircle className='w-24 h-24 rounded-full mx-auto'/>)}
                 </label>
                 <input onChange={uploadImage} className='hidden' type="file" name="image_uploads"       id="image_uploads" 
                 accept='.png,.jpg,.jpeg'
@@ -120,7 +120,7 @@ function Signup(){
                     value={SignUpData.mobileNumber}
                     />
                     <label htmlFor="password" className='text-xl font-semibold'>password</label>
-                    <input type="text" name="password" id="passeord" className='text-center font-semibold pb-2 pt-2 rounded-lg hover:rounded-none border bg-transparent'
+                    <input type="password" name="password" id="passeord" className='text-center font-semibold pb-2 pt-2 rounded-lg hover:rounded-none border bg-transparent'
                     placeholder= "Enter your Password"
                     onChange={handleUserInput}
                     value={SignUpData.password}

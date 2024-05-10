@@ -3,7 +3,7 @@ import axiosInstance from '../Helper/axiosInstance.js'
 import  toast from 'react-hot-toast'
 const initialState ={
     isLoggedIn:localStorage.getItem('isLoggedIn')||false,
-    data:localStorage.getItem('data')||{}
+    data:JSON.parse(localStorage.getItem('data'))||{}
 }
 export const Rgister = createAsyncThunk('/auth/rgister',async(data)=>{
     try{
@@ -53,6 +53,39 @@ export const Logout = createAsyncThunk('/auth/logout',async()=>{
         toast.error(error?.data?.response?.message)
     }
 })
+export const updateprofile = createAsyncThunk('/auth/update',async(data)=>{
+    try{
+         const res = axiosInstance.put(`/user/update/${data[0]}`,data[1])
+         toast.promise(res,{
+            loading:" profile update in progress...",
+            success:(data)=>{
+                return data?.data?.message
+            },
+            error:' updation faild !!'
+         })
+         return (await res).data
+
+    }catch(error){
+        toast.error(error?.data?.response?.message)
+    }
+})
+export const  getUserdtails = createAsyncThunk('/auth/user',async()=>{
+    try{
+        const res = axiosInstance.get('/user/profile')
+        toast.promise(res,{
+            loading:'user dtails fetching in progress...',
+            success:(data)=>{
+                return data?.data?.message
+            },
+            error:" faild to load data"
+        })
+        return (await res).data
+
+    }catch(e){
+        toast.error(e?.data?.response?.message)
+    }
+})
+export
 
 const authSice = createSlice({
     name:'auth',
@@ -68,6 +101,12 @@ const authSice = createSlice({
             localStorage.clear()
             state.isLoggedIn = false;
             state.data = {}
+        }).addCase(getUserdtails.fulfilled,(state,action)=>{
+            if(action?.payload?.success) return;
+            localStorage.setItem('data',JSON.stringify(action?.payload?.user))
+            localStorage.setItem('isLoggedIn',true)
+            state.data = action?.payload?.success;
+            state.isLoggedIn = true
         })
 
     }
