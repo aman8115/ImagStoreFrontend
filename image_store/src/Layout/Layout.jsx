@@ -3,6 +3,7 @@
 import {AiFillCloseCircle}  from 'react-icons/ai'
 import  {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Logout } from '../Slice/AuthSlice'
 function Home({children}){
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -16,6 +17,10 @@ function Home({children}){
      const element = document.getElementsByClassName('drawer-toggle')
      element[0].checked = false
      
+    }
+    async function handelLogout(e){
+       e.preventDefault()
+       const res = await dispatch(Logout())
     }
     return (
         <>
@@ -65,8 +70,8 @@ function Home({children}){
                   <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
                       <Link to="/profile">Profile</Link>
                   </button>
-                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
-                      <Link>Logout</Link>
+                  <button onClick={handelLogout} className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                      <Link  >Logout</Link>
                   </button>
               </div>
                </li>
@@ -116,7 +121,7 @@ function Home({children}){
                   <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
                       <Link to="/profile">Profile</Link>
                   </button>
-                  <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
+                  <button onClick={handelLogout} className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
                       <Link >Logout</Link>
                   </button>
               </div>
