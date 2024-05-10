@@ -5,6 +5,7 @@ import Home from './Layout/Layout'
 import HomePage from './pages/HomePage'
 import Signup from './user/signup'
 import Login from './user/login'
+import Profile from './user/profile'
 
 function App() {
   return(
@@ -13,6 +14,7 @@ function App() {
      <Route path='/' element = { <HomePage/>}></Route>
      <Route path='/signup' element = {<Signup/>}></Route>
      <Route path='/login' element = {<Login/>}></Route>
+     <Route path='/profile' element = {<Profile/>}></Route>
 
    </Routes>
   
