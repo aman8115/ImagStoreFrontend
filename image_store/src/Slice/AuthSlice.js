@@ -1,9 +1,9 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axiosInstance from '../Helper/axiosInstance.js'
 import  toast from 'react-hot-toast'
-const initialState ={
+const initialState = {
     isLoggedIn:localStorage.getItem('isLoggedIn')||false,
-    data:JSON.parse(localStorage.getItem('data'))||{}
+    data:localStorage.getItem("data")!== undefined?JSON.parse(localStorage.getItem('data')):{}
 }
 export const Rgister = createAsyncThunk('/auth/rgister',async(data)=>{
     try{
@@ -85,7 +85,22 @@ export const  getUserdtails = createAsyncThunk('/auth/user',async()=>{
         toast.error(e?.data?.response?.message)
     }
 })
-export
+export const deleteProfile = createAsyncThunk('/auth/delete',async()=>{
+    try{
+        const res = axiosInstance.delete(`/user/delete`)
+        toast.promise(res,{
+            loading:' wait!! Account deleting  in progress...',
+            success:(data)=>{
+                return data?.data?.message
+            },
+            error:'faiid to delete Account '
+        })
+        return (await res).data
+
+    }catch(e){
+        toast.error(e?.data?.response?.message)
+    }
+})
 
 const authSice = createSlice({
     name:'auth',
@@ -107,6 +122,9 @@ const authSice = createSlice({
             localStorage.setItem('isLoggedIn',true)
             state.data = action?.payload?.success;
             state.isLoggedIn = true
+        }).addCase(deleteProfile.fulfilled,(state)=>{
+            state.isLoggedIn = false;
+            state.data = {}
         })
 
     }

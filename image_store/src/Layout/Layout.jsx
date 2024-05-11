@@ -74,6 +74,7 @@ function Home({children}){
                   <button onClick={handelLogout} className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
                       <Link  >Logout</Link>
                   </button>
+                  
               </div>
                </li>
                 )}

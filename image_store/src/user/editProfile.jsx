@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate,Link } from "react-router-dom";
@@ -55,7 +55,10 @@ function EditProfile(){
        try{
 
         await dispatch(updateprofile([data.userId,formdata])) 
-        await dispatch(getUserdtails())
+            
+      
+            await dispatch(getUserdtails())
+      
        navigate('/profile')
        }catch(e){
 
@@ -63,6 +66,7 @@ function EditProfile(){
        }
 
     }
+    
     return(
        <Home>
 

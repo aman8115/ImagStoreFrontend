@@ -1,10 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Home from "../Layout/Layout";
 import { Link, useNavigate } from "react-router-dom";
+import { deleteProfile } from "../Slice/AuthSlice";
 
 function Profile(){
     const userData = useSelector((state)=>state?.auth?.data)
    const navigate = useNavigate()
+   const dispatch = useDispatch()
+   async function deleteAccount(){
+    if(window.confirm(' Are you  sure to  delete your Account')){
+        const res = await dispatch(deleteProfile())
+        if(res?.payload?.success) navigate('/')
+    }
+   }
    
 return(
     <Home>
@@ -24,15 +32,25 @@ return(
                <p className="text-lg font-semibold tracking-widest">mobileNumber:</p>
                <p className="text-lg font-semibold tracking-widest">{userData?.mobileNumber}</p>
 
-            </div>
-            <div className="w-full border pb-2 pt-2 rounded-lg  bg-indigo-500 text-center text-white text-lg hover:bg-indigo-600 hover:rounded-none transition-all ease-in-out  duration-300 cursor-pointer">
+               <div className="w-full border pb-2 pt-2 rounded-lg  bg-indigo-500 text-center text-white text-lg hover:bg-indigo-600 hover:rounded-none transition-all ease-in-out  duration-300 cursor-pointer">
                 <Link to= '/editprofile'>Update profile</Link>
             </div>
 
+             <div  className="w-full border pb-2 pt-2 rounded-lg  bg-red-500 text-center text-white text-lg hover:bg-red-600 hover:rounded-none transition-all ease-in-out  duration-300 cursor-pointer" onClick={deleteAccount}>
+               Delete profile
+            </div>
+
+
+                
+            </div>
+
+            </div>
+           
+
 
             </div>
 
-         </div>
+        
 
     </Home>
 )

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LogIn } from "../Slice/AuthSlice";
 import Home from "../Layout/Layout";
 
+
 function Login(){
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -27,6 +28,7 @@ function Login(){
         }
         const res = await dispatch(LogIn(loginData))
         if(res?.payload?.success) navigate('/')
+           
 
          SetloginData({
                email:'',
