@@ -3,8 +3,11 @@ import toast from "react-hot-toast"
 import axiosInstance from "../Helper/axiosInstance"
 import { act } from "react"
 
+
 const initialState ={
-    postData:[]
+    ImageData:[],
+    videoData:[]
+
 }
 export const postImage = createAsyncThunk('/post/image',async(data)=>{
     try{
@@ -46,7 +49,7 @@ export const getImage = createAsyncThunk('/post/getImage',async()=>{
             },
             error:' Faild to load Image'
         })
-        return (await res).data
+        return (await res).data.Images
 
     }catch(error){
     toast.error(error?.data?.response?.message)
@@ -62,7 +65,7 @@ export const getVideo = createAsyncThunk('/post/getVideo',async()=>{
         },
         error:" Faild to load Video"
     })
-    return (await res).data
+    return (await res).data.videos
 
     }catch(errro){
         toast.error(errro?.data?.response?.message)
@@ -106,9 +109,14 @@ const postSlice = createSlice({
     reducers:{},
     extraReducers:((builder)=>{
         builder.addCase(getImage.fulfilled,(state,action)=>{
-            if(action?.payload){
-                state.postData = [...action?.payload]
-            }
+          
+           if(action?.payload){
+            
+            state.ImageData = [...action?.payload]
+           }
+        })
+        .addCase(getVideo.fulfilled,(state,action)=>{
+            state.videoData = [...action?.payload]
         })
 
     })

@@ -3,6 +3,8 @@ import Home from "../Layout/Layout";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteProfile } from "../Slice/AuthSlice";
 
+import { useEffect } from "react";
+
 function Profile(){
     const userData = useSelector((state)=>state?.auth?.data)
    const navigate = useNavigate()
@@ -13,6 +15,7 @@ function Profile(){
         if(res?.payload?.success) navigate('/')
     }
    }
+  
    
 return(
     <Home>
@@ -39,7 +42,10 @@ return(
              <div  className="w-full border pb-2 pt-2 rounded-lg  bg-red-500 text-center text-white text-lg hover:bg-red-600 hover:rounded-none transition-all ease-in-out  duration-300 cursor-pointer" onClick={deleteAccount}>
                Delete profile
             </div>
-
+            <div  onClick={()=>{navigate('/getimage')}}className="w-full border pb-2 pt-2 rounded-lg text-center text-white
+             text-lg bg-yellow-600 hover:rounded-none transition-all ease-in-out duartion-300 cursor-pointer">GetImage</div>
+                <div onClick={()=>navigate('/getvideo')} className="w-full border pb-2 pt-2 rounded-lg text-white text-lg bg-blue-600 hover:bg-blue-500 transition-all duration-300 ease-in-out text-center cursor-pointer
+                "> Get Video</div>
 
                 
             </div>
