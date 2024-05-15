@@ -8,6 +8,9 @@ import Login from './user/login'
 import Profile from './user/profile'
 import EditProfile from './user/editProfile'
 import GetImage from './media/getImage'
+import ImageDescription from './media/imagedescription'
+import GetVideo from './media/getvideo'
+import VideoDescription from './media/Videodescription'
 
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
      <Route path='/profile' element = {<Profile/>}></Route>
      <Route path='/editprofile' element ={<EditProfile/>}></Route>
      <Route path='/getimage' element = {<GetImage/>}></Route>
+     <Route path='/image/description' element ={<ImageDescription/>}></Route>
+     <Route path='/getvideo' element = {<GetVideo/>}></Route>
+     <Route path='/video/description' element ={<VideoDescription/>}></Route>
 
    </Routes>
   

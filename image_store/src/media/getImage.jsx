@@ -8,7 +8,7 @@ import ImageCard from "./imageCard"
 function GetImage(){
     const dispatch = useDispatch()
     const  ImageData = useSelector((state)=>state?.post?.ImageData)
-          console.log(ImageData)
+          
     async function Findimage(){
         await dispatch (getImage())
     }

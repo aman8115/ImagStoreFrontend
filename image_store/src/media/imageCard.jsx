@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom"
 import Home from "../Layout/Layout"
 
 function ImageCard({data}){
+    const navigate = useNavigate()
 return(
     
 
-        <div  className="text-white w-[22rem] h-[430px] rounded-lg shadow-xl group overflow-hidden cursor-pointer text-center font-semibold tracking-wider" >
+        <div  className="text-white w-[22rem] h-[430px] rounded-lg shadow-xl group overflow-hidden cursor-pointer text-center font-semibold tracking-wider" 
+         onClick={()=>navigate('/image/description',{state:{...data}})}
+        >
             <img  
              className="h-48 w-full rounded-tr-lg rounded-tl-lg transition-all ease-in-out group-hover:scale[1,2]"
             src={data?.Post?.secure_url} />
