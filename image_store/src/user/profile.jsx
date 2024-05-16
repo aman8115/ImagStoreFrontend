@@ -50,6 +50,10 @@ return(
                 
             </div>
 
+            <div  className="w-full border pb-2 pt-2 rounded-lg  bg-red-500 text-center text-white text-lg hover:bg-red-600 hover:rounded-none transition-all ease-in-out  duration-300 cursor-pointer"  onClick={()=>navigate('/interactionwithpost')}>
+               Interaction with post
+            </div>
+
             </div>
            
 

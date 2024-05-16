@@ -49,6 +49,8 @@ function Home({children}){
             <li> <Link to= '/'> Home </Link></li>
             <li><Link to='/aboutus'>Aboutus</Link> </li>
             <li> <Link to = '/contactus'> Contactus </Link></li>
+
+           
             <ul>
                 
                 {!isLoggedIn &&(
@@ -106,12 +108,15 @@ function Home({children}){
                 {!isLoggedIn &&(
                   <li>
                   <div className='flex items-center justify-center gap-3 w-full '>
+
+                  
                   <button className='btn btn-primary py-0.5 px-2 rounded-xl font-semibold w-24'>
                       <Link to="/login">Login</Link>
                   </button>
                   <button className='btn btn-secondary py-0.5  px-2 font-semibold w-24 rounded-xl'>
                       <Link to='/signup'>SignUp</Link>
                   </button>
+                 
               </div>
               </li>
 
