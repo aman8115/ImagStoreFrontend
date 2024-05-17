@@ -48,7 +48,7 @@ function handelpostImage(event){
     formDate.append('description',imageData.description)
     formDate.append('Post',imageData?.Post)
     const res =  await dispatch(postImage(formDate))
-    if(res?.payload?.success) navigate('/')
+    if(res?.payload?.success) navigate('/getimage')
       SetimageData({
      nameOfimage:'',
      description:'',

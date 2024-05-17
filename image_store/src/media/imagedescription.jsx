@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Home from "../Layout/Layout";
 import { deleteImage } from "../Slice/postSlice";
+import{ AiOutlineArrowLeft} from 'react-icons/ai'
 
 function ImageDescription(){
     const{ state} = useLocation()
@@ -34,6 +35,7 @@ function ImageDescription(){
                    <button 
                    onClick={()=>DeleteImage(state?._id)}
                    className="p-3 rounded-lg hover:rounded-none border w-full transition-all ease-in-out duration-300 bg-zinc-900 text-lg text-center text-red-400 hover:text-amber-500"> Remove your image </button>
+                   <Link to='/getimage' className="text-2xl text-green-500 font-semibold"> <AiOutlineArrowLeft/></Link>
                    
 
                    

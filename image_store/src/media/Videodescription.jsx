@@ -1,7 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Home from "../Layout/Layout"
 import { useDispatch } from "react-redux"
 import { deleteVideo } from "../Slice/postSlice"
+import {AiOutlineArrowLeft} from 'react-icons/ai'
 
 function VideoDescription(){
     const{state } = useLocation()
@@ -37,6 +38,9 @@ function VideoDescription(){
                     
                     onClick={()=>Deletevideo(state?._id)}
                     className="text-center text-xl tracking-wider font-semibold p-2 rounded-xl hover:rounded-none border w-full bg-orange-300 text-black transition-all ease-in-out duartion-300 hover:bg-gray-200 "> Remove Video </button>
+                    <Link to='/getvideo'  className="text-2xl font-semibold text-green-600" title="click to videos"> <AiOutlineArrowLeft/></Link>
+
+
 
                 </div>
 

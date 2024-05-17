@@ -26,7 +26,7 @@ export const postImage = createAsyncThunk('/post/image',async(data)=>{
 })
 export const postVideo = createAsyncThunk('/post/video',async(data)=>{
     try{
-         const res = axiosInstance.post('/mediea/postvideo')
+         const res = axiosInstance.post('/mediea/postvideo',data)
          toast.promise(res,{
             loading:' Wait video post in  progress....',
             success:(data)=>{
