@@ -101,6 +101,25 @@ export const deleteProfile = createAsyncThunk('/auth/delete',async()=>{
         toast.error(e?.data?.response?.message)
     }
 })
+export const Contact  = createAsyncThunk('/auth/contact',async(data)=>{
+    try{
+        const res = axiosInstance.post('/user/contactus',data)
+        console.log(res)
+        toast.promise(res,{
+            loading:'Wait!! Message Sending in process....',
+            success:(data)=>{
+                return data?.data?.message
+            },
+            error:" faild to send message"
+        })
+        return (await res).data
+
+    }catch(error){
+        toast.error(error?.data?.response?.message)
+    }
+    
+
+})
 
 const authSice = createSlice({
     name:'auth',

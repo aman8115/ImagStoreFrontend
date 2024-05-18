@@ -14,6 +14,7 @@ import VideoDescription from './media/Videodescription'
 import InteractionPost from './media/interaction'
 import PostImage from './media/PostImage'
 import PostVideo from './media/postVideo'
+import Contactus from './component/contactus'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
      <Route path='/interactionwithpost' element ={<InteractionPost/>}></Route>
      <Route path='/postimage' element ={<PostImage/>}></Route>
      <Route path='/postvideo' element ={<PostVideo/>}></Route>
+     <Route path='/contactus' element={<Contactus/>}></Route>
      
 
    </Routes>
