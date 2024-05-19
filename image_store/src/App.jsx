@@ -15,6 +15,7 @@ import InteractionPost from './media/interaction'
 import PostImage from './media/PostImage'
 import PostVideo from './media/postVideo'
 import Contactus from './component/contactus'
+import AboutUs from './component/Aboutus'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
      <Route path='/postimage' element ={<PostImage/>}></Route>
      <Route path='/postvideo' element ={<PostVideo/>}></Route>
      <Route path='/contactus' element={<Contactus/>}></Route>
+     <Route path='/aboutus' element = {<AboutUs/>}> </Route>
      
 
    </Routes>
